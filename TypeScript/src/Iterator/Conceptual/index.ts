@@ -28,8 +28,6 @@ interface Aggregator {
  * store the current traversal position at all times.
  */
 class AlphabeticalOrderIterator implements Iterator<string> {
-  private collection: WordsCollection
-
   /**
    * Stores the current traversal position. An iterator may have a lot of
    * other fields for storing iteration state, especially when it is supposed
@@ -37,15 +35,8 @@ class AlphabeticalOrderIterator implements Iterator<string> {
    */
   private position = 0
 
-  /**
-   * This variable indicates the traversal direction.
-   */
-  private reverse = false
-
-  constructor(collection: WordsCollection, reverse = false) {
-    this.collection = collection
-    this.reverse = reverse
-
+  constructor(private collection: WordsCollection, private reverse = false) {
+    // This variable indicates the traversal direction.
     if (reverse) {
       this.position = collection.count - 1
     }

@@ -16,7 +16,6 @@ class Prototype {
 
   public clone(): this {
     const clone = Object.create(this)
-
     clone.component = Object.create(this.component)
 
     // Cloning an object that has a nested object with backreference

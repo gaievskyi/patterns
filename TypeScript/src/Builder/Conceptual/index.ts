@@ -22,7 +22,7 @@ interface Builder {
  * variations of Builders, implemented differently.
  */
 class ConcreteBuilder1 implements Builder {
-  private product: Product1
+  #product: Product1
 
   /**
    * A fresh builder instance should contain a blank product object, which is
@@ -33,7 +33,7 @@ class ConcreteBuilder1 implements Builder {
   }
 
   public reset(): void {
-    this.product = new Product1()
+    this.#product = new Product1()
   }
 
   /**
@@ -65,8 +65,8 @@ class ConcreteBuilder1 implements Builder {
    * you can make your builders wait for an explicit reset call from the
    * client code before disposing of the previous result.
    */
-  public getProduct(): Product1 {
-    const result = this.product
+  public get product(): Product1 {
+    const result = this.#product
     this.reset()
     return result
   }
@@ -132,17 +132,17 @@ function clientCode(director: Director) {
 
   console.log("Standard basic product:")
   director.buildMinimalViableProduct()
-  builder.getProduct().listParts()
+  builder.product.listParts()
 
   console.log("Standard full featured product:")
   director.buildFullFeaturedProduct()
-  builder.getProduct().listParts()
+  builder.product.listParts()
 
   // Remember, the Builder pattern can be used without a Director class.
   console.log("Custom product:")
   builder.producePartA()
   builder.producePartC()
-  builder.getProduct().listParts()
+  builder.product.listParts()
 }
 
 const director = new Director()

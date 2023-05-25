@@ -48,11 +48,7 @@ class UserController implements Controller {
 }
 
 class MyDecorator implements Controller {
-  protected controller: Controller
-
-  constructor(controller: Controller) {
-    this.controller = controller
-  }
+  constructor(protected controller: Controller) {}
 
   public process(request: ControllerRequest): Promise<ControllerResponse> {
     return this.controller.process(request)

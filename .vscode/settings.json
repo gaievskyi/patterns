@@ -1,0 +1,25 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    ".next": true,
+    ".swc": true,
+    ".vscode": true,
+    "**/__pycache__": false,
+    "**/.cache": false,
+    "**/.classpath": false,
+    "**/.eslintcache": false,
+    "**/.factorypath": false,
+    "**/.idea": false,
+    "**/.next": false,
+    "**/.project": false,
+    "**/.settings": false,
+    "**/.solid": false,
+    "**/.swc": false,
+    "**/node_modules": true
+  }
+}

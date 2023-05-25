@@ -22,28 +22,25 @@ interface Transformer {
 }
 
 interface Loader {
-  load(input: Map): Promise<any>
+  load(input: Map): Promise<unknown>
 }
 
 class FileExtractor implements Extractor {
-  filepath: string
-  constructor(filepath: string) {
-    this.filepath = filepath
-  }
+  constructor(public filepath: string) {}
 
   public async extract() {
-    // load file from this.filepath
     return fs.readFile(this.filepath, "utf8")
   }
 }
 
 class FileLoader implements Loader {
-  filepath: string
-  constructor(filepath: string) {
-    this.filepath = filepath
-  }
+  constructor(public filepath: string) {}
+
   public async load(input: Map) {
-    return fs.writeFile(this.filepath, JSON.stringify(input, undefined, 4))
+    return await fs.writeFile(
+      this.filepath,
+      JSON.stringify(input, undefined, 4)
+    )
   }
 }
 
@@ -55,12 +52,12 @@ class FileTransformer implements Transformer {
       if (line.trim().length === 0) return
 
       const [key] = line.split(",")
-      if (typeof result === "undefined") {
-      }
-      if (typeof result[key] === "undefined") {
+
+      if (result && result[key]) {
+        result[key] = result[key] + 1
+      } else {
         result[key] = 0
       }
-      result[key] = result[key] + 1
     })
 
     return result
@@ -74,15 +71,11 @@ class FileTransformer implements Transformer {
  * transform and load methods of the subsystems.
  */
 class ETLProcessor {
-  extractor: Extractor
-  transformer: Transformer
-  loader: Loader
-
-  constructor(extractor: Extractor, transformer: Transformer, loader: Loader) {
-    this.extractor = extractor
-    this.transformer = transformer
-    this.loader = loader
-  }
+  constructor(
+    public extractor: Extractor,
+    public transformer: Transformer,
+    public loader: Loader
+  ) {}
 
   public async process() {
     const input = await this.extractor.extract()

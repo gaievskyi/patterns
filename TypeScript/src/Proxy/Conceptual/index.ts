@@ -30,15 +30,11 @@ class RealSubject implements Subject {
  * The Proxy has an interface identical to the RealSubject.
  */
 class MyProxy implements Subject {
-  private realSubject: RealSubject
-
   /**
    * The Proxy maintains a reference to an object of the RealSubject class. It
    * can be either lazy-loaded or passed to the Proxy by the client.
    */
-  constructor(realSubject: RealSubject) {
-    this.realSubject = realSubject
-  }
+  constructor(private realSubject: RealSubject) {}
 
   /**
    * The most common applications of the Proxy pattern are lazy loading,

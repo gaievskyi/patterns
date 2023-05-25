@@ -103,7 +103,6 @@ class ConcreteVisitor2 implements Visitor {
  * the appropriate operation in the visitor object.
  */
 function clientCode(components: Component[], visitor: Visitor) {
-  // ...
   for (const component of components) {
     component.accept(visitor)
   }

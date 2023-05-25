@@ -31,11 +31,7 @@ class ConcreteComponent implements Component {
  * it.
  */
 class Decorator implements Component {
-  protected component: Component
-
-  constructor(component: Component) {
-    this.component = component
-  }
+  constructor(protected component: Component) {}
 
   /**
    * The Decorator delegates all work to the wrapped component.

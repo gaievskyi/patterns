@@ -30,11 +30,8 @@ class Adaptee {
  * interface.
  */
 class Adapter extends Target {
-  private adaptee: Adaptee
-
-  constructor(adaptee: Adaptee) {
+  constructor(private adaptee: Adaptee) {
     super()
-    this.adaptee = adaptee
   }
 
   public request(): string {

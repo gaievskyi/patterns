@@ -13,18 +13,14 @@
  * complexity of the subsystem.
  */
 class Facade {
-  protected subsystem1: Subsystem1
-
-  protected subsystem2: Subsystem2
-
   /**
    * Depending on your application's needs, you can provide the Facade with
    * existing subsystem objects or force the Facade to create them on its own.
    */
-  constructor(subsystem1?: Subsystem1, subsystem2?: Subsystem2) {
-    this.subsystem1 = subsystem1 || new Subsystem1()
-    this.subsystem2 = subsystem2 || new Subsystem2()
-  }
+  constructor(
+    protected subsystem1 = new Subsystem1(),
+    protected subsystem2 = new Subsystem2()
+  ) {}
 
   /**
    * The Facade's methods are convenient shortcuts to the sophisticated
@@ -38,7 +34,6 @@ class Facade {
     result += "Facade orders subsystems to perform the action:\n"
     result += this.subsystem1.operationN()
     result += this.subsystem2.operationZ()
-
     return result
   }
 }
@@ -68,8 +63,6 @@ class Subsystem2 {
     return "Subsystem2: Get ready!\n"
   }
 
-  // ...
-
   public operationZ(): string {
     return "Subsystem2: Fire!"
   }
@@ -82,10 +75,7 @@ class Subsystem2 {
  * approach lets you keep the complexity under control.
  */
 function clientCode(facade: Facade) {
-  // ...
-
   console.log(facade.operation())
-
   // ...
 }
 

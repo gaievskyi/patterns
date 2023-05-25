@@ -18,11 +18,7 @@
  * hierarchy and delegates all of the real work to this object.
  */
 class Abstraction {
-  protected implementation: Implementation
-
-  constructor(implementation: Implementation) {
-    this.implementation = implementation
-  }
+  constructor(protected implementation: Implementation) {}
 
   public operation(): string {
     const result = this.implementation.operationImplementation()
