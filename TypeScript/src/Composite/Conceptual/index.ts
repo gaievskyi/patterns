@@ -10,19 +10,19 @@
  * complex objects of a composition.
  */
 abstract class Component {
-  protected parent!: Component | null
+  #parent: Component | null
 
   /**
    * Optionally, the base Component can declare an interface for setting and
    * accessing a parent of the component in a tree structure. It can also
    * provide some default implementation for these methods.
    */
-  public setParent(parent: Component | null) {
-    this.parent = parent
+  public set parent(value: Component | null) {
+    this.#parent = value
   }
 
-  public getParent(): Component | null {
-    return this.parent
+  public get parent(): Component | null {
+    return this.#parent
   }
 
   /**
@@ -78,14 +78,13 @@ class Composite extends Component {
    */
   public add(component: Component): void {
     this.children.push(component)
-    component.setParent(this)
+    component.parent = this
   }
 
   public remove(component: Component): void {
     const componentIndex = this.children.indexOf(component)
     this.children.splice(componentIndex, 1)
-
-    component.setParent(null)
+    component.parent = null
   }
 
   public isComposite(): boolean {

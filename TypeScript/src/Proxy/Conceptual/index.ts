@@ -52,7 +52,6 @@ class MyProxy implements Subject {
   private checkAccess(): boolean {
     // Some real checks should go here.
     console.log("Proxy: Checking access prior to firing a real request.")
-
     return true
   }
 
@@ -82,3 +81,5 @@ console.log("")
 console.log("Client: Executing the same client code with a proxy:")
 const proxy = new MyProxy(realSubject)
 clientCode(proxy)
+
+export {}

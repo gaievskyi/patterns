@@ -10,10 +10,10 @@
  */
 class Context {
   /**
-   * @type {Strategy} The Context maintains a reference to one of the Strategy
+   * The Context maintains a reference to one of the Strategy
    * objects. The Context does not know the concrete class of a strategy. It
    * should work with all strategies via the Strategy interface.
-   * Usually, the Context accepts a strategy through the constructor, but also
+   * Usually, the Context accepts @type {Strategy} through the constructor, but also
    * provides a setter to change it at runtime.
    */
   constructor(private strategy: Strategy) {}

@@ -33,7 +33,7 @@ class ConcreteBuilder1 implements Builder {
   }
 
   public reset(): void {
-    this.#product = new Product1()
+    this.product = new Product1()
   }
 
   /**
@@ -70,6 +70,10 @@ class ConcreteBuilder1 implements Builder {
     this.reset()
     return result
   }
+
+  private set product(value: Product1) {
+    this.#product = value
+  }
 }
 
 /**
@@ -95,15 +99,19 @@ class Product1 {
  * optional, since the client can control builders directly.
  */
 class Director {
-  private builder: Builder
+  #builder: Builder
+
+  public get builder(): Builder {
+    return this.#builder
+  }
 
   /**
    * The Director works with any builder instance that the client code passes
    * to it. This way, the client code may alter the final type of the newly
    * assembled product.
    */
-  public setBuilder(builder: Builder): void {
-    this.builder = builder
+  public set builder(value: Builder) {
+    this.builder = value
   }
 
   /**
@@ -128,7 +136,7 @@ class Director {
  */
 function clientCode(director: Director) {
   const builder = new ConcreteBuilder1()
-  director.setBuilder(builder)
+  director.builder = builder
 
   console.log("Standard basic product:")
   director.buildMinimalViableProduct()
