@@ -1,4 +1,5 @@
-### macOS ###
+.vscode
+.idea
 
 # General
 .DS_Store
