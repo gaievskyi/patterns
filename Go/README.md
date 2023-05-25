@@ -1,3 +1,3 @@
 # Design Patterns in Go
 
-Go examples of some classic GoF design patterns.
+Go examples of all classic GoF design patterns.

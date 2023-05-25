@@ -123,5 +123,3 @@ console.log(
 )
 const visitor2 = new ConcreteVisitor2()
 clientCode(components, visitor2)
-
-export {}

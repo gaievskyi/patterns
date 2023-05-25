@@ -1,6 +1,6 @@
-# Design Patterns implementations
+# Software Design Patterns
 
-Examples of the popular GoF design patterns.
+Implementations of all GoF (Gangs of four\*) design patterns implemented in:
 
 - [x] [TypeScript](TypeScript)
 - [x] [Python](Python)

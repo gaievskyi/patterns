@@ -47,7 +47,9 @@ class AlphabeticalOrderIterator implements Iterator<string> {
   }
 
   public current(): string {
-    return this.collection.items[this.position]
+    const item = this.collection.items[this.position]
+    if (!item) return ""
+    return item
   }
 
   public key(): number {
@@ -56,6 +58,7 @@ class AlphabeticalOrderIterator implements Iterator<string> {
 
   public next(): string {
     const item = this.collection.items[this.position]
+    if (!item) return ""
     this.position += this.reverse ? -1 : 1
     return item
   }
@@ -120,5 +123,3 @@ const reverseIterator = collection.getReverseIterator()
 while (reverseIterator.valid()) {
   console.log(reverseIterator.next())
 }
-
-export {}

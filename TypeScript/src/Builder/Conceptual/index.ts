@@ -22,7 +22,7 @@ interface Builder {
  * variations of Builders, implemented differently.
  */
 class ConcreteBuilder1 implements Builder {
-  #product: Product1
+  #product!: Product1
 
   /**
    * A fresh builder instance should contain a blank product object, which is
@@ -99,7 +99,7 @@ class Product1 {
  * optional, since the client can control builders directly.
  */
 class Director {
-  #builder: Builder
+  #builder!: Builder
 
   public get builder(): Builder {
     return this.#builder

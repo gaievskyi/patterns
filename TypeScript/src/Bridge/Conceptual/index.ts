@@ -30,7 +30,7 @@ class Abstraction {
  * You can extend the Abstraction without changing the Implementation classes.
  */
 class ExtendedAbstraction extends Abstraction {
-  public operation(): string {
+  public override operation(): string {
     const result = this.implementation.operationImplementation()
     return `ExtendedAbstraction: Extended operation with:\n${result}`
   }
@@ -90,5 +90,3 @@ console.log("")
 implementation = new ConcreteImplementationB()
 abstraction = new ExtendedAbstraction(implementation)
 clientCode(abstraction)
-
-export {}

@@ -5,12 +5,12 @@
 interface ControllerRequest {
   url: string
   method: string
-  data?: any
+  data?: unknown
 }
 
 interface ControllerResponse {
   status: number
-  data: any
+  data: unknown
 }
 
 interface Controller {
@@ -56,7 +56,7 @@ class MyDecorator implements Controller {
 }
 
 class TelemetryDecorator extends MyDecorator {
-  public async process(
+  public override async process(
     request: ControllerRequest
   ): Promise<ControllerResponse> {
     const start = new Date().getTime()
@@ -76,6 +76,4 @@ class TelemetryDecorator extends MyDecorator {
 }
 
 const userController = new TelemetryDecorator(new UserController())
-userController.process({ url: "/users", method: "GET" })
-
-export {}
+void userController.process({ url: "/users", method: "GET" })

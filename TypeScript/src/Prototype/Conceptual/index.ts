@@ -11,14 +11,14 @@
  */
 class Prototype {
   public primitive: unknown
-  public component: object
-  public circularReference: ComponentWithBackReference
+  public component!: object
+  public circularReference!: ComponentWithBackReference
 
   public clone(): this {
-    const clone = Object.create(this)
-    clone.component = Object.create(this.component)
+    const clone = Object.create(this) as this
+    clone.component = Object.create(this.component) as this
 
-    // Cloning an object that has a nested object with backreference
+    // Cloning an object that has a nested object with back reference
     // requires special treatment. After the cloning is completed, the
     // nested object should point to the cloned object, instead of the
     // original object. Spread operator can be handy for this case.
@@ -78,5 +78,3 @@ function clientCode() {
 }
 
 clientCode()
-
-export {}

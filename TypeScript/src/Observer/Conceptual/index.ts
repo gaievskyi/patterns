@@ -28,10 +28,10 @@ interface Subject {
  */
 class ConcreteSubject implements Subject {
   /**
-   * @type {number} For the sake of simplicity, the Subject's state, essential
+   * For the sake of simplicity, the Subject's state, essential
    * to all subscribers, is stored in this variable.
    */
-  public state: number
+  public state = 0
 
   /**
    * @type {Observer[]} List of subscribers. In real life, the list of
@@ -137,5 +137,3 @@ subject.someBusinessLogic()
 subject.detach(observer2)
 
 subject.someBusinessLogic()
-
-export {}

@@ -34,7 +34,7 @@ class Adapter extends Target {
     super()
   }
 
-  public request(): string {
+  public override request(): string {
     const result = this.adaptee.specificRequest().split("").reverse().join("")
     return `Adapter: (TRANSLATED) ${result}`
   }
@@ -64,5 +64,3 @@ console.log("")
 console.log("Client: But I can work with it via the Adapter:")
 const adapter = new Adapter(adaptee)
 clientCode(adapter)
-
-export {}

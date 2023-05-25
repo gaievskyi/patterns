@@ -50,7 +50,7 @@ class ConcreteDecoratorA extends Decorator {
    * calling the wrapped object directly. This approach simplifies extension
    * of decorator classes.
    */
-  public operation(): string {
+  public override operation(): string {
     return `ConcreteDecoratorA(${super.operation()})`
   }
 }
@@ -60,7 +60,7 @@ class ConcreteDecoratorA extends Decorator {
  * wrapped object.
  */
 class ConcreteDecoratorB extends Decorator {
-  public operation(): string {
+  public override operation(): string {
     return `ConcreteDecoratorB(${super.operation()})`
   }
 }
@@ -93,5 +93,3 @@ const decorator1 = new ConcreteDecoratorA(simple)
 const decorator2 = new ConcreteDecoratorB(decorator1)
 console.log("Client: Now I've got a decorated component:")
 clientCode(decorator2)
-
-export {}

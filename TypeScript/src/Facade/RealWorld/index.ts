@@ -11,7 +11,7 @@ import * as fs from "fs/promises"
  * extractor and passing the parsed result to the transformer.
  */
 
-type Map = { [key: string]: any }
+type Map = { [key: string]: unknown }
 
 interface Extractor {
   extract(): Promise<string>
@@ -46,17 +46,18 @@ class FileLoader implements Loader {
 
 class FileTransformer implements Transformer {
   public transform(input: string): Map {
-    let result: Map = {}
+    const result: Map = {}
 
     input.split("\n").forEach((line) => {
       if (line.trim().length === 0) return
 
       const [key] = line.split(",")
+      if (!key) return
 
-      if (result && result[key]) {
-        result[key] = result[key] + 1
+      if (result[key] === undefined) {
+        result[key] = 1
       } else {
-        result[key] = 0
+        result[key] = Number(result[key]) + 1
       }
     })
 
@@ -90,6 +91,6 @@ const processor = new ETLProcessor(
   new FileLoader("output.json")
 )
 
-processor.process().then(() => {
+void processor.process().then(() => {
   console.log("Process completed")
 })

@@ -150,5 +150,3 @@ console.log(
   "Client: Testing the same client code with the second factory type..."
 )
 clientCode(new ConcreteFactory2())
-
-export {}

@@ -10,7 +10,7 @@
  * complex objects of a composition.
  */
 abstract class Component {
-  #parent: Component | null
+  #parent!: Component | null
 
   /**
    * Optionally, the base Component can declare an interface for setting and
@@ -32,8 +32,12 @@ abstract class Component {
    * object tree assembly. The downside is that these methods will be empty
    * for the leaf-level components.
    */
-  public add(component: Component): void {}
-  public remove(component: Component): void {}
+  public add(component: Component): void {
+    //
+  }
+  public remove(component: Component): void {
+    //
+  }
 
   /**
    * You can provide a method that lets the client code figure out whether a
@@ -76,18 +80,18 @@ class Composite extends Component {
    * A composite object can add or remove other components (both simple or
    * complex) to or from its child list.
    */
-  public add(component: Component): void {
+  public override add(component: Component): void {
     this.children.push(component)
     component.parent = this
   }
 
-  public remove(component: Component): void {
+  public override remove(component: Component): void {
     const componentIndex = this.children.indexOf(component)
     this.children.splice(componentIndex, 1)
     component.parent = null
   }
 
-  public isComposite(): boolean {
+  public override isComposite(): boolean {
     return true
   }
 
@@ -155,5 +159,3 @@ console.log(
   "Client: I don't need to check the components classes even when managing the tree:"
 )
 clientCode2(tree, simple)
-
-export {}

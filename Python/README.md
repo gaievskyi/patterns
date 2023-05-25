@@ -1,6 +1,6 @@
 # Design Patterns in Python
 
-Python examples of some classic GoF design patterns.
+Python examples of all classic GoF design patterns.
 
 - [x] **Conceptual** examples show the internal structure of patterns, including detailed comments.
 

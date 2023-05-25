@@ -81,5 +81,3 @@ console.log("")
 console.log("Client: Executing the same client code with a proxy:")
 const proxy = new MyProxy(realSubject)
 clientCode(proxy)
-
-export {}

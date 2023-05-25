@@ -1,15 +1,24 @@
 {
-    "name": "design-patterns-typescript",
-    "description": "TypeScript implementations of all classic GoF design patterns",
-    "author": "Daniel Gaievskyi <gaievskyi@proton.me>",
-    "license": "MIT",
-    "scripts": {
-        "format": "prettier --cache --write \"./**/*.{js,jsx,cjs,mjs,ts,tsx,json}\""
-    },
-    "devDependencies": {
-        "@types/node": "^20.2.3",
-        "@types/prettier": "^2.7.2",
-        "prettier": "^2.8.8",
-        "typescript": "^5.0.4"
-    }
+  "name": "software-design-patterns",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Implementations of all classic GoF software design patterns",
+  "author": "Daniel Gaievskyi <gaievskyi@proton.me>",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --cache --write \"./**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json}\"",
+    "lint": "eslint . --cache --ext js,cjs,mjs,jsx,ts,cts,mts,tsx"
+  },
+  "devDependencies": {
+    "@total-typescript/ts-reset": "^0.4.2",
+    "@types/eslint": "^8.40.0",
+    "@types/node": "^20.2.3",
+    "@types/prettier": "^2.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
+    "eslint": "^8.41.0",
+    "prettier": "^2.8.8",
+    "tsx": "^3.12.7",
+    "typescript": "^5.0.4"
+  }
 }

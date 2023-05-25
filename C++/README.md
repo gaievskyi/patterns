@@ -1,6 +1,6 @@
 # Design Patterns in C++
 
-C++ examples of some classic GoF design patterns.
+C++ examples of all classic GoF design patterns.
 
 - [x] **Conceptual** examples show the internal structure of patterns with detailed comments.
 

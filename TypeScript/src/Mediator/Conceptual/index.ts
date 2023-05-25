@@ -92,5 +92,3 @@ c1.doA()
 console.log("")
 console.log("Client triggers operation D.")
 c2.doD()
-
-export {}
